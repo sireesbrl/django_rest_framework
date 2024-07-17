@@ -30,7 +30,7 @@ class SnippetDetail(APIView):
         try:
             snippet = Snippet.objects.get(pk=pk)
         except Snippet.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            raise Http404
 
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
